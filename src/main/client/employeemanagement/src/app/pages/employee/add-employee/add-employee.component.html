@@ -1,0 +1,87 @@
+<p style="background-color: #39A6A3; padding: 10px;">
+    <span>Add New Employee</span>
+    <button type="button" style="float: right;" class="btn btn-sm btn-warning" (click)="onCancel()">Cancel</button>
+</p>
+
+
+
+<form class="m-2">
+    <!-- Row for Name and Contact -->
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <label for="name" class="form-label">Employee Name</label>
+        <input type="text" [(ngModel)]="employeeObj.employeeName" class="form-control" id="name" name="name" placeholder="Enter name">
+      </div>
+      <div class="col-md-6">
+        <label for="number" class="form-label">Contact No</label>
+        <input type="number" [(ngModel)]="employeeObj.contactNo" class="form-control" id="number" name="number" placeholder="Enter contact number">
+      </div>
+    </div>
+  
+    <!-- Row for Email -->
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" [(ngModel)]="employeeObj.emailId" id="email" name="email" placeholder="Enter email">
+      </div>
+    </div>
+  
+    <!-- Row for Departments -->
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <label for="department" class="form-label">Parent Department</label>
+        <select class="form-select" id="department" name="department">
+          <option value="" selected disabled>Select Department</option>
+          <option value="2">Department 2</option>
+          <option value="3">Department 3</option>
+          <option value="4">Department 4</option>
+          <option value="5">Department 5</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="cdepartment" class="form-label">Child Department</label>
+        <select class="form-select" [(ngModel)]="employeeObj.deptId" id="cdepartment" name="cdepartment">
+          <option value="0" selected disabled>Select Child Department</option>
+          <option value="2">Child 2</option>
+          <option value="3">Child 3</option>
+          <option value="4">Child 4</option>
+          <option value="5">Child 5</option>
+        </select>
+      </div>
+    </div>
+  
+    <!-- Row for Password and Role -->
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" [(ngModel)]="employeeObj.password" class="form-control" id="password" name="password" placeholder="Enter password">
+      </div>
+      <div class="col-md-6">
+        <label for="role" class="form-label">Role</label>
+        <input type="text" class="form-control" id="role" [(ngModel)]="employeeObj.role" name="role" placeholder="Enter role">
+      </div>
+    </div>
+  
+    <!-- Gender Selection -->
+    <fieldset class="mb-2">
+      <legend class="col-form-label pt-0">Gender</legend>
+      <div class="form-check">
+        <input class="form-check-input"  [(ngModel)]="employeeObj.gender" type="radio" id="genderMale" name="gender" value="male">
+        <label class="form-check-label" for="genderMale">Male</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input"  [(ngModel)]="employeeObj.gender" type="radio" id="genderFemale" name="gender" value="female">
+        <label class="form-check-label" for="genderFemale">Female</label>
+      </div>
+    </fieldset>
+  
+    <!-- Submit Button -->
+    <div>
+      @if (!isEdit) {
+        <button  type="button" class="btn btn-sm btn-primary" (click)="onAdd()">Add</button>
+      }@else {
+        <button  type="button" class="btn btn-sm btn-primary" (click)="onUpdateEmployee(employeeObj.id)">Update</button>
+      }
+    </div>
+  </form>
+  

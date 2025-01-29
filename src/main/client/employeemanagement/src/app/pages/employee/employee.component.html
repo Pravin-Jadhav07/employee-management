@@ -1,0 +1,39 @@
+
+@if (showNotification) {
+  <app-notification
+  [message]="notificationMessage"
+></app-notification>
+}
+
+
+<p style="background-color: #39A6A3; padding: 10px;">
+    <span>Employee Portal</span>
+    <button type="button" style="float: right;" class="btn btn-sm btn-primary" (click)="onAddNew()">Add New</button>
+</p>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Sr No</th>
+        <th scope="col">Name</th>
+        <th scope="col">Contact No</th>
+        <th scope="col">Email</th>
+        <th scope="col">Department</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (emp of employeeList; track $index) {
+        <tr>
+          <th scope="row">{{$index+1}}</th>
+          <td>{{emp.employeeName}}</td>
+          <td>{{emp.contactNo}}</td>
+          <td>{{emp.emailId}}</td>
+          <td>{{emp.deptId}}</td>
+          <td>
+              <button type="button" class="btn btn-sm btn-danger" (click)="onDelete(emp.id)">Delete</button>&nbsp;
+              <button type="button" class="btn btn-sm btn-primary" (click)="onEdit(emp.id)">Edit</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
