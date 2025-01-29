@@ -1,0 +1,3 @@
+.notification-wrapper {
+  z-index: 1050; /* Higher than Bootstrap modals */
+}
