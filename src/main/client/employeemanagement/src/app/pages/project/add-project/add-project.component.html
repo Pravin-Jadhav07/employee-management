@@ -1,0 +1,60 @@
+
+<p style="background-color: #39A6A3; padding: 10px;">
+    <span>Add New Project</span>
+    <button type="button" style="float: right;" class="btn btn-sm btn-warning" (click)="onCancel()">Cancel</button>
+</p>
+
+
+
+<form class="m-2">
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <label for="pName" class="form-label">Project Name</label>
+        <input type="text" [(ngModel)]="projectObj.projectName" class="form-control" id="pName" name="pName" placeholder="Enter project name">
+      </div>
+      <div class="col-md-6">
+        <label for="cName" class="form-label">Client Name</label>
+        <input type="text" [(ngModel)]="projectObj.clientName" class="form-control" id="cName" name="cName" placeholder="Enter client name">
+      </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-md-6">
+          <label for="sDate" class="form-label">Start Date</label>
+          <input type="date" [(ngModel)]="projectObj.startDate" class="form-control" id="sDate" name="sDate" placeholder="Enter start date">
+        </div>
+        <div class="col-md-6">
+          <label for="leadBy" class="form-label">Lead By</label>
+          <select class="form-select" [(ngModel)]="projectObj.leadBy" name="leadBy">
+            <option value="0" selected disabled>Select employee</option>
+            <option *ngFor="let emp of employeeList" [value]="emp.id">
+              {{ emp.employeeName }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+  
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <label for="contact" class="form-label">Contact Person</label>
+        <input type="text" [(ngModel)]="projectObj.contactPerson" class="form-control" id="contact" name="contact" placeholder="Enter person name">
+      </div>
+      <div class="col-md-6">
+        <label for="conNum" class="form-label">Contact Number</label>
+        <input type="number" class="form-control" id="conNum" [(ngModel)]="projectObj.contact" name="conNum" placeholder="Enter contact number">
+      </div>
+    </div>
+
+  
+    <!-- Submit Button -->
+    <div>
+      @if (!isEdit) {
+        <button  type="button" class="btn btn-sm btn-primary" (click)="onAddProject()">Add</button>
+      }@else {
+        <button  type="button" class="btn btn-sm btn-primary" (click)="onUpdateProject(projectObj.id)">Update</button>
+      }
+      
+    </div>
+  </form>
+  

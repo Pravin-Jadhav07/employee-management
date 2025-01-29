@@ -1,0 +1,40 @@
+
+@if (showNotification) {
+  <app-notification
+  [message]="notificationMessage"
+></app-notification>
+}
+
+<p style="background-color: #39A6A3; padding: 10px;">
+    <span>Projects Portal</span>
+    <button type="button" style="float: right;" class="btn btn-sm btn-primary" (click)="onAddNewProject()">Add New</button>
+</p>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Sr No</th>
+        <th scope="col">ProjectId</th>
+        <th scope="col">Project Name</th>
+        <th scope="col">Client Name</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">Lead By</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (project of projectList; track $index) {
+        <tr>
+          <th scope="row">{{$index+1}}</th>
+          <td>{{project.id}}</td>
+          <td>{{project.projectName}}</td>
+          <td>{{project.clientName}}</td>
+          <td>{{project.startDate}}</td>
+          <td>{{project.leadBy}}</td>
+          <td>
+              <button type="button" class="btn btn-sm btn-danger" (click)="onDeleteProject(project.id)">Delete</button>&nbsp;
+              <button type="button" class="btn btn-sm btn-primary" (click)="onEditProject(project.id)">Edit</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
