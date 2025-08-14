@@ -2,7 +2,6 @@ package com.jadhav.employeemanagement.Service;
 
 import com.jadhav.employeemanagement.Dao.EmployeeDao;
 import com.jadhav.employeemanagement.Entities.Employee;
-import com.jadhav.employeemanagement.Repository.EmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
